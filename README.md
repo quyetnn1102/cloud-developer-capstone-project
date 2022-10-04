@@ -1,10 +1,10 @@
-# Serverless Topic
+# TOPIC Management Application
 
-To implement this project, you need to implement a simple TOPIC application using AWS Lambda and Serverless framework. Search for all comments starting with the `TOPIC:` in the code to find the placeholders that you need to implement.
+To implement this project, you need to implement a simple TOPIC management application using AWS Lambda and Serverless framework. Search for all comments starting with the `TOPIC:` in the code to find the placeholders that you need to implement.
 
 # Functionality of the application
 
-This application will allow creating/removing/updating/fetching TOPIC items. Each TOPIC item can optionally have an attachment image. Each user only has access to TOPIC items that he/she has created.
+This application will allow user to create/remove/update/fetch TOPIC items. Each TOPIC item can optionally have an attachment image. Each user only has access to TOPIC items that he/she has created.
 
 # TOPIC items
 

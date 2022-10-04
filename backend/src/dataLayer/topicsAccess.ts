@@ -9,7 +9,7 @@ const AWSXRay = require('aws-xray-sdk');
 const XAWS = AWSXRay.captureAWS(AWS)
 
 const logger = createLogger('TopicsAccess')
-// TODO: Implement the dataLayer logic
+// Implement the dataLayer logic
 export  class TopicsAccess {
     constructor(
         private readonly docClient: DocumentClient = new XAWS.DynamoDB.DocumentClient(),
@@ -54,7 +54,7 @@ export  class TopicsAccess {
 
     // update topic item
     async updateTopicItem(topicId, userId, updatedTopic:TopicUpdateItem) {
-        logger.info("update topicId: " + topicId + " " +userId)
+        logger.info("update topicId: " + topicId + " " + userId)
           await this.docClient.update({
               TableName: this.topicsTable,
               Key: {

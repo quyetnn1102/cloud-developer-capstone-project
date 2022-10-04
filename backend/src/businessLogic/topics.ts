@@ -12,7 +12,7 @@ import * as uuid from 'uuid'
 const topicAccess = new TopicsAccess();
 const topicsStorage = new TopicsStorage();
 const logger = createLogger('topics');
-// TODO: Implement businessLogic
+// Topic: Implement businessLogic
 // create topic item
 export async function createTopicItem(event: APIGatewayProxyEvent, createTopicRequest: CreateTopicRequest): Promise<TopicItem> {
     const topicId = uuid.v4();
@@ -28,7 +28,7 @@ export async function createTopicItem(event: APIGatewayProxyEvent, createTopicRe
         attachmentUrl: `https://${bucketName}.s3.amazonaws.com/${topicId}`,
         ...createTopicRequest
     };
-    logger.info('createTopicItem userId:' + userId + "topicId: " + topicId + " bucketname: " +bucketName );
+    logger.info('createTopicItem userId:' + userId + "topicId: " + topicId + " bucketname: " + bucketName );
     await topicAccess.addTopicItem(topicItem);
 
     return topicItem;
@@ -38,7 +38,7 @@ export async function createTopicItem(event: APIGatewayProxyEvent, createTopicRe
 export async function getTopicItem(event: APIGatewayProxyEvent) {
     const topicId = event.pathParameters.topicId;
     const userId = getUserId(event);
-    logger.log('getTopicItem userId: ' + userId + " topicId: " + topicId );
+    logger.info('getTopicItem userId: ' + userId + " topicId: " + topicId);
     return await topicAccess.getTopicItem(topicId, userId);
 }
 
@@ -58,7 +58,7 @@ export async function updateTopicItem(event: APIGatewayProxyEvent,
     if (!(await topicAccess.getTopicItem(topicId, userId))) {
         return false;
     }
-    logger.info('updateTopicItem of userId: ' + userId + " topicId: "+topicId );    
+    logger.info('updateTopicItem of userId: ' + userId + " topicId: " + topicId );    
     await topicAccess.updateTopicItem(topicId, userId, updateTopicRequest);
     return true;
 }
@@ -70,7 +70,7 @@ export async function deleteTopicItem(event: APIGatewayProxyEvent) {
     if (!(await topicAccess.getTopicItem(topicId, userId))) {
         return false;
     }
-    logger.info('Delete topic  item by topicId: ' + topicId + " userId: "+userId );
+    logger.info('Delete topic  item by topicId: ' + topicId + " userId: " + userId );
     await topicAccess.deleteTopicItem(topicId, userId);
 
     return true;
@@ -80,6 +80,6 @@ export async function generateUploadUrl(event: APIGatewayProxyEvent): Promise<st
     const bucket = await topicsStorage.getBucketName();
     const urlExpiration = process.env.SIGNED_URL_EXPIRATION;
     const topicId = event.pathParameters.topicId;
-    logger.info('generateUploadUrl bucket: ' + bucket + " topicId: "+topicId )
+    logger.info('generateUploadUrl bucket: ' + bucket + " topicId: " + topicId )
     return await topicsStorage.getPresignedUploadURL(bucket,topicId,urlExpiration);
 }

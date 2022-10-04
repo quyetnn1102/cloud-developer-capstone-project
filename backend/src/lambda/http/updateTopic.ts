@@ -10,7 +10,7 @@ const logger = createLogger('topics');
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {    
     const updatedTopic: UpdateTopicRequest = JSON.parse(event.body)
-    // TODO: Update a TOPIC item with the provided id using values in the "updatedTopic" object
+    // Update a TOPIC item with the provided id using values in the "updatedTopic" object
     const isExisted = await updateTopicItem(event, updatedTopic);
     logger.info("Check existing item: " + isExisted);
     // check wether topic item is existing or not

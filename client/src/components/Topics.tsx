@@ -113,7 +113,7 @@ export class Topics extends React.PureComponent<TopicsProps, TopicsState> {
   render() {
     return (
       <div>
-        <Header as="h1">TOPICs</Header>
+        <Header as="h1">Topics</Header>
 
         {this.renderCreateTopicInput()}
 
@@ -131,7 +131,7 @@ export class Topics extends React.PureComponent<TopicsProps, TopicsState> {
               color: 'teal',
               labelPosition: 'left',
               icon: 'add',
-              content: 'New topic',
+              content: 'New',
               onClick: this.onTopicCreate
             }}
             fluid
@@ -159,7 +159,7 @@ export class Topics extends React.PureComponent<TopicsProps, TopicsState> {
     return (
       <Grid.Row>
         <Loader indeterminate active inline="centered">
-          Loading TOPICS
+          Loading Topics
         </Loader>
       </Grid.Row>
     )

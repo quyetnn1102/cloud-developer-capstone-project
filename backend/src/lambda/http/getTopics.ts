@@ -5,7 +5,7 @@ import * as middy from 'middy'
 import { cors } from 'middy/middlewares'
 import { getTopicItems } from '../../businessLogic/topics'
 
-// TODO: Get all TOPIC items for a current user
+// Get all TOPIC items for a current user
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     // Write your code here

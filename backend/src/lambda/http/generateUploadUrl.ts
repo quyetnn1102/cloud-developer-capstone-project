@@ -7,7 +7,7 @@ import { generateUploadUrl } from '../../businessLogic/topics'
 
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {    
-    // TODO: Return a presigned URL to upload a file for a TOPIC item with the provided id
+    // Return a presigned URL to upload a file for a TOPIC item with the provided id
     const theSignedUrl = await generateUploadUrl(event);
     console.log('theSignedUrl:' + theSignedUrl )
       return {

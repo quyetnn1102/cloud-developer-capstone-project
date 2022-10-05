@@ -10,7 +10,6 @@ const logger = createLogger('topics');
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const newTopic: CreateTopicRequest = JSON.parse(event.body)
-    // TODO: Implement creating a new TOPIC item
     if(!newTopic.name)
     {
       return {
